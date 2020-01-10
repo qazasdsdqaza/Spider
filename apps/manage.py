@@ -11,16 +11,16 @@ class TicketSpider(object):
     def __init__(self):
         ua = FakeUserAgent()
         self.station_name = station()
-        # self.from_station = input('请输入出发站: ')
-        # from_station = self.station_name[self.from_station]
-        # self.to_station = input('请输入到达站: ')
-        # to_station = self.station_name[self.to_station]
-        # self.date = input('请输入出发日期: ')
+        self.from_station = input('请输入出发站: ')
+        from_station = self.station_name[self.from_station]
+        self.to_station = input('请输入到达站: ')
+        to_station = self.station_name[self.to_station]
+        self.date = input('请输入出发日期: ')
         self.url = 'https://kyfw.12306.cn/otn/leftTicket/queryZ?' \
-                   'leftTicketDTO.train_date=2020-01-22&' \
-                   'leftTicketDTO.from_station=VNP&' \
-                   'leftTicketDTO.to_station=SHH&' \
-                   'purpose_codes=ADULT'  # % (self.date, from_station, to_station)
+                   'leftTicketDTO.train_date=%s&' \
+                   'leftTicketDTO.from_station=%s&' \
+                   'leftTicketDTO.to_station=%s&' \
+                   'purpose_codes=ADULT' % (self.date, from_station, to_station)
         self.headers = {'user-agent': ua.chrome}
 
     def process_parse(self):
